@@ -6,43 +6,25 @@ const Page = () => {
   return (
     <div
       style={{ backgroundImage: "url(bg-3.jpg)" }}
-      className="w-screen h-screen bg-cover bg-center flex items-center bg-black justify-center"
+      className="w-screen h-screen bg-cover bg-center flex items-center flex-col bg-black justify-center overflow-y-auto"
     >
-      <div
-        style={{ backgroundImage: "url(atombg-comp.webp" }}
-        className="h-[69%] w-[85%] relative flex flex-row justify-end bg-cover bg-center rounded-xl border border-white"
-      >
-        <div className="h-[40rem] w-full bg-transparent flex flex-col items-center justify-start mt-5 overflow-hidden rounded-md">
-      <h1 className="md:text-3.5xl text-1.5xl lg:text-5xl font-bold text-center text-white relative z-20">
+      <h1 className="text-xl mt-40 md:text-3.5xl lg:text-5xl font-bold text-center md:text-left pb-5 text-white top-5 relative z-20 sm:m-10">
         Resume
       </h1>
-      <div className="w-[40rem] h-40 relative">
-        {/* Gradients */}
-        <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
-        <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
-        <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
-        <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
-        {/* Core component */}
-        <SparklesCore
-          background="transparent"
-          minSize={0.4}
-          maxSize={1}
-          particleDensity={1600}
-          className="w-full h-full"
-          particleColor="#FFFFFF"
-        />
-        
-        {/* Radial Gradient to prevent sharp edges */}
-        
-        <div className="absolute text-2xl inset-0 w-full h-full bg-transparent text-gray-400 font-semibold dark:text-gray-300 my-10 mx-0">
-        I am pursuing a B.Tech in Computer Science at SRM University, Ghaziabad, Uttar Pradesh, with a GPA of 9.30/10.00, expected to graduate in June 2025. I have completed a virtual internship with PwC, enhancing my skills in Java, Python, SQL, DevOps, and Cyber Security.
-
+      <div
+        style={{ backgroundImage: "url(atombg-comp.webp)" }}
+        className="w-[85%] h-[80] max-w-4xl relative flex flex-col  md:flex-row justify-end bg-cover bg-center rounded-xl border sm:items-center sm:mt-30 border-white p-2 md:p-5"
+      >
+        <div className="h-auto w-full bg-transparent flex flex-col md:flex-row items-center justify-start md:justify-between mt-0 lg:mt-5  rounded-md p-2 py-2">
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="text-base md:text-2xl text-gray-400 font-semibold dark:text-gray-300  mx-0 relative">
+              I am pursuing a B.Tech in Computer Science at SRM University, Ghaziabad, Uttar Pradesh, with a GPA of 9.30/10.00, expected to graduate in June 2025. I have completed a virtual internship with PwC, enhancing my skills in Java, Python, SQL, DevOps, and Cyber Security.
+            </div>
+            <ThreeDCardDemo />
+          </div>
         </div>
+        
       </div>
-    </div>
-        < ThreeDCardDemo/>
-      </div>
-      
     </div>
   );
 };

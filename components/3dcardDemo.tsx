@@ -15,10 +15,10 @@ export default function ThreeDCardDemo() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative mt-5 md:mt-0">
       {isFullScreen && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 bg-black bg-opacity-80" onClick={handleCloseFullScreen}>
-          <div className="max-w-full max-h-full ">
+          <div className="max-w-full max-h-full">
             <Image
               src="/res.png"
               layout="fill"
@@ -29,10 +29,10 @@ export default function ThreeDCardDemo() {
         </div>
       )}
       <CardContainer className="inter-var">
-        <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-fit sm:w-[20rem] h-auto rounded-xl p-6 border">
+        <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full sm:w-[20rem] h-auto rounded-xl p-6 border">
           <CardItem
             translateZ="50"
-            className="text-xl font-bold  text-neutral-600 dark:text-white"
+            className="text-xl font-bold text-neutral-600 dark:text-white"
           >
             <CardItem
               translateZ="100"
@@ -40,21 +40,20 @@ export default function ThreeDCardDemo() {
             >
               <Image
                 src="/res.png"
-                height="00"
+                height="1000"
                 width="1000"
-                className="h-110 w-full relative align-middle object-cover rounded-xl group-hover/card:shadow-xl"
+                className="h-auto w-full relative align-middle object-cover rounded-xl group-hover/card:shadow-xl"
                 alt="thumbnail"
               />
             </CardItem>
           </CardItem>
-
-          <div className="flex justify-between items-center mt-5">
+          <div className="flex flex-col sm:flex-row justify-between items-center mt-5">
             <CardItem
               translateZ={20}
               as="a"
               href="https://drive.google.com/file/d/1NCfAf_P_XhW8BTaJqbCrSEUKCsSgC05M/view?usp=drive_link"
               target="__blank"
-              className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+              className="px-4 py-2 mb-2 sm:mb-0 rounded-xl text-xs font-normal dark:text-white"
             >
               Download →
             </CardItem>

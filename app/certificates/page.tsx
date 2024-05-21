@@ -15,7 +15,7 @@ type Project = {
   previewUrl: string;
 };
 
-const projectsData: Project[] = [
+const certificatesData: Project[] = [
   {
     id: 1,
     title: "DSA Visualiser",
@@ -171,7 +171,7 @@ const Page: React.FC = () => {
     setTag(newTag);
   };
 
-  const filteredProjects = projectsData.filter((project) =>
+  const filteredProjects = certificatesData.filter((project) =>
     tag === "All" || project.tag.includes(tag)
   );
 
@@ -186,7 +186,7 @@ const Page: React.FC = () => {
       className="w-screen h-screen flex items-center flex-col justify-center bg-center bg-cover overflow-scroll overflow-x-hidden"
     >
       <h2 className="text-center text-4xl font-bold text-white mt-14 md:mb-12">
-        My Projects
+        My Certificates
       </h2>
       
       {/* Add NavigationMenuDemo */}
@@ -203,22 +203,27 @@ const Page: React.FC = () => {
           />
           <ProjectTag
             onClick={() => handleTagChange("Web")}
-            name="web"
+            name="Coursera"
             isSelected={tag === "Web"}
           />
           <ProjectTag
             onClick={() => handleTagChange("React/Next")}
-            name="React/Next"
+            name="Udemy"
             isSelected={tag === "React/Next"}
           />
           <ProjectTag
             onClick={() => handleTagChange("Android")}
-            name="Android"
+            name="Hackerrank"
             isSelected={tag === "Android"}
           />
           <ProjectTag
             onClick={() => handleTagChange("UI")}
-            name="UI"
+            name="Nptel"
+            isSelected={tag === "UI"}
+          />
+         <ProjectTag
+            onClick={() => handleTagChange("UI")}
+            name="Sololearn"
             isSelected={tag === "UI"}
           />
         </div>
