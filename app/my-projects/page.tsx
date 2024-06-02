@@ -1,8 +1,8 @@
-'use client'
+'use client';
 import React, { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import ProjectTag from "@/components/ProjectTag";
-import ProjectCard from '@/components/ProjectCard' // Adjust the path as needed
+import ProjectCard from '@/components/ProjectCard'; // Adjust the path as needed
 import { NavigationMenuDemo } from "@/components/NavigationMenuDemo";
 
 type Project = {
@@ -13,6 +13,7 @@ type Project = {
   tag: string[];
   gitUrl: string;
   previewUrl: string;
+  tooltipData: { id: number; name: string; designation: string; image: string }[];
 };
 
 const projectsData: Project[] = [
@@ -24,6 +25,11 @@ const projectsData: Project[] = [
     tag: ["All", "Web"],
     gitUrl: "/",
     previewUrl: "https://dsavisualiser.netlify.app/",
+    tooltipData: [
+      { id: 1, name: "HTML", designation: "Structure", image: "/html.png" },
+      { id: 2, name: "CSS", designation: "Styling", image: "/css.png" },
+      { id: 3, name: "JavaScript", designation: "Functioning", image: "/js.png" }
+    ]
   },
   {
     id: 2,
@@ -32,7 +38,12 @@ const projectsData: Project[] = [
     image: "/images/projects/ecommerce.png",
     tag: ["All", "Web"],
     gitUrl: "/",
-    previewUrl: "https://dsavisualiser.netlify.app/",
+    previewUrl: "https://ecommerce-weebsitee.netlify.app/",
+    tooltipData: [
+      { id: 1, name: "HTML", designation: "Structure", image: "/html.png" },
+      { id: 2, name: "CSS", designation: "Styling", image: "/css.png" },
+      { id: 3, name: "JavaScript", designation: "Functioning", image: "/js.png" }
+    ]
   },
   {
     id: 3,
@@ -41,7 +52,12 @@ const projectsData: Project[] = [
     image: "/images/projects/travelweb.png",
     tag: ["All", "Web"],
     gitUrl: "/",
-    previewUrl: "/",
+    previewUrl: "",
+    tooltipData: [
+      { id: 1, name: "HTML", designation: "Structure", image: "/html.png" },
+      { id: 2, name: "CSS", designation: "Styling", image: "/css.png" },
+      { id: 3, name: "JavaScript", designation: "Functioning", image: "/js.png" }
+    ]
   },
   {
     id: 4,
@@ -51,6 +67,11 @@ const projectsData: Project[] = [
     tag: ["All", "Web"],
     gitUrl: "/",
     previewUrl: "https://event-o-srm.netlify.app/",
+    tooltipData: [
+      { id: 1, name: "HTML", designation: "Structure", image: "/html.png" },
+      { id: 2, name: "CSS", designation: "Styling", image: "/css.png" },
+      { id: 3, name: "JavaScript", designation: "Functioning", image: "/js.png" }
+    ]
   },
   {
     id: 5,
@@ -59,7 +80,12 @@ const projectsData: Project[] = [
     image: "/images/projects/WebQuiz.png",
     tag: ["All", "Web"],
     gitUrl: "/",
-    previewUrl: "/",
+    previewUrl: "https://website-quiz-miniproject.netlify.app/",
+    tooltipData: [
+      { id: 1, name: "HTML", designation: "Structure", image: "/html.png" },
+      { id: 2, name: "CSS", designation: "Styling", image: "/css.png" },
+      { id: 3, name: "JavaScript", designation: "Functioning", image: "/js.png" }
+    ]
   },
   {
     id: 6,
@@ -68,7 +94,12 @@ const projectsData: Project[] = [
     image: "/images/projects/ins.png",
     tag: ["All", "Web"],
     gitUrl: "/",
-    previewUrl: "/",
+    previewUrl: "https://leocosta1.github.io/instagram-clone/#",
+    tooltipData: [
+      { id: 1, name: "HTML", designation: "Structure", image: "/html.png" },
+      { id: 2, name: "CSS", designation: "Styling", image: "/css.png" },
+      { id: 3, name: "JavaScript", designation: "Functioning", image: "/js.png" }
+    ]
   },
   {
     id: 7,
@@ -77,7 +108,12 @@ const projectsData: Project[] = [
     image: "/images/projects/Fooddel.png",
     tag: ["All", "Web"],
     gitUrl: "/",
-    previewUrl: "/",
+    previewUrl: "https://sugandh-fast-food.netlify.app/",
+    tooltipData: [
+      { id: 1, name: "HTML", designation: "Structure", image: "/html.png" },
+      { id: 2, name: "CSS", designation: "Styling", image: "/css.png" },
+      { id: 3, name: "JavaScript", designation: "Functioning", image: "/js.png" }
+    ]
   },
   {
     id: 8,
@@ -87,6 +123,11 @@ const projectsData: Project[] = [
     tag: ["All", "Web"],
     gitUrl: "/",
     previewUrl: "https://chess-game-miniproj.netlify.app/",
+    tooltipData: [
+      { id: 1, name: "HTML", designation: "Structure", image: "/html.png" },
+      { id: 2, name: "CSS", designation: "Styling", image: "/css.png" },
+      { id: 3, name: "JavaScript", designation: "Functioning", image: "/js.png" }
+    ]
   },
   {
     id: 9,
@@ -95,7 +136,13 @@ const projectsData: Project[] = [
     image: "/images/projects/gallery.png",
     tag: ["All", "React/Next"],
     gitUrl: "/",
-    previewUrl: "/",
+    previewUrl: "https://photo-gallery-two-plum.vercel.app/",
+    tooltipData: [
+      { id: 1, name: "Next.js", designation: "Framework", image: "/next.png" },
+      { id: 2, name: "Tailwind", designation: "CSS Styling", image: "/tailwind.png" },
+      { id: 3, name: "TypeScript", designation: "Functioning", image: "/ts.png" },
+      { id: 4, name: "Cloudinary", designation: "Api", image: "/cloudinary.png" }
+    ]
   },
   {
     id: 10,
@@ -104,7 +151,13 @@ const projectsData: Project[] = [
     image: "/images/projects/nexus.png",
     tag: ["All", "React/Next"],
     gitUrl: "/",
-    previewUrl: "/",
+    previewUrl: "https://nexus-ai-tool.vercel.app/",
+    tooltipData: [
+      { id: 1, name: "Next.js", designation: "Framework", image: "/next.png" },
+      { id: 2, name: "Tailwind", designation: "CSS Styling", image: "/tailwind.png" },
+      { id: 3, name: "TypeScript", designation: "Functioning", image: "/ts.png" },
+      { id: 4, name: "Open AI", designation: "Api", image: "/openai.jpg" }
+    ]
   },
   {
     id: 11,
@@ -113,7 +166,12 @@ const projectsData: Project[] = [
     image: "/images/projects/file.png",
     tag: ["All", "React/Next"],
     gitUrl: "/",
-    previewUrl: "/",
+    previewUrl: "https://fileizer.vercel.app/",
+    tooltipData: [
+      { id: 1, name: "Next.js", designation: "Framework", image: "/next.png" },
+      { id: 2, name: "Tailwind", designation: "CSS Styling", image: "/tailwind.png" },
+      { id: 3, name: "JavaScript", designation: "Functioning", image: "/js.png" }
+    ]
   },
   {
     id: 12,
@@ -123,6 +181,11 @@ const projectsData: Project[] = [
     tag: ["All", "Android"],
     gitUrl: "/",
     previewUrl: "https://app.flutterflow.io/share/pray-kart-roegh1",
+    tooltipData: [
+      { id: 1, name: "Flutter", designation: "Dart", image: "/flutter.png" },
+      { id: 2, name: "FlutterFlow", designation: "Low-Code", image: "/ff.png" },
+      { id: 3, name: "Firebase", designation: "Database", image: "/firebase.png" }
+    ]
   },
   {
     id: 13,
@@ -131,7 +194,12 @@ const projectsData: Project[] = [
     image: "/images/projects/nty.png",
     tag: ["All", "Android"],
     gitUrl: "/",
-    previewUrl: "/",
+    previewUrl: "https://app.flutterflow.io/share/ttll-sq5wr9",
+    tooltipData: [
+      { id: 1, name: "Flutter", designation: "Dart", image: "/flutter.png" },
+      { id: 2, name: "FlutterFlow", designation: "Low-Code", image: "/ff.png" },
+      { id: 3, name: "Firebase", designation: "Database", image: "/firebase.png" }
+    ]
   },
   {
     id: 14,
@@ -141,6 +209,11 @@ const projectsData: Project[] = [
     tag: ["All", "UI"],
     gitUrl: "/",
     previewUrl: "https://www.figma.com/design/iWlQfSMwcEBqaDOAOaxTIz/Wikipedia-Redesign?node-id=0%3A1&t=lISgmngqVygXtURm-1",
+    tooltipData: [
+      { id: 1, name: "Figma", designation: "UI-Tool", image: "/figma.jpg" },
+      { id: 2, name: "Canva", designation: "Pics", image: "/canva.jpg" },
+      { id: 3, name: "Behance", designation: "Inspiration", image: "/be.png" }
+    ]
   },
   {
     id: 15,
@@ -150,6 +223,11 @@ const projectsData: Project[] = [
     tag: ["All", "UI"],
     gitUrl: "/",
     previewUrl: "https://www.figma.com/design/CseOjSESiAVK1H6zSiwfCi/Ddsgnr---Newsletter-Webflow-Website-Template-(Community)?node-id=0-1",
+    tooltipData: [
+      { id: 1, name: "Figma", designation: "UI-Tool", image: "/figma.jpg" },
+      { id: 2, name: "Canva", designation: "Pics", image: "/canva.jpg" },
+      { id: 3, name: "Behance", designation: "Inspiration", image: "/be.png" }
+    ]
   },
   {
     id: 16,
@@ -159,8 +237,14 @@ const projectsData: Project[] = [
     tag: ["All", "UI"],
     gitUrl: "/",
     previewUrl: "https://www.figma.com/design/cj3mhoDO3FlfnUilqUpSD9/Untitled?node-id=0%3A1&t=eD3n1eR80ILPvMd2-1",
-  },
+    tooltipData: [
+      { id: 1, name: "Figma", designation: "UI-Tool", image: "/figma.jpg" },
+      { id: 2, name: "Canva", designation: "Pics", image: "/canva.jpg" },
+      { id: 3, name: "Behance", designation: "Inspiration", image: "/be.png" }
+    ]
+  }
 ];
+
 
 const Page: React.FC = () => {
   const [tag, setTag] = useState<string>("All");
@@ -189,21 +273,20 @@ const Page: React.FC = () => {
         My Projects
       </h2>
       
-      {/* Add NavigationMenuDemo */}
       <div className="absolute top-20 left-0 text-white py-4">
         <NavigationMenuDemo />
       </div>
       
       <div className="flex items-center flex-col gap-5 max-w-[90%] max-h-[90%] sm:px-5">
-        <div className="text-white flex flex-row justify-center items-center gap-2 py-6">
-          <ProjectTag
+      <div className="text-white flex flex-wrap justify-center items-center gap-2 py-4">
+      <ProjectTag
             onClick={() => handleTagChange("All")}
             name="All"
             isSelected={tag === "All"}
           />
           <ProjectTag
             onClick={() => handleTagChange("Web")}
-            name="web"
+            name="Web"
             isSelected={tag === "Web"}
           />
           <ProjectTag
@@ -237,6 +320,7 @@ const Page: React.FC = () => {
                 text={project.description}
                 previewUrl={project.previewUrl}
                 gitUrl={project.gitUrl}
+                tooltipData={project.tooltipData} // Pass the tooltipData here
               />
             </motion.li>
           ))}

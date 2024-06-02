@@ -1,7 +1,8 @@
-"use client";
+'use client';
 
 import * as React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // Import usePathname hook
 
 import { cn } from "@/utils/cn";
 import {
@@ -11,10 +12,9 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from '@/components/ui/dropdown';
 import Image from "next/image";
-import { carrent, logo, menu } from "@/assets";
+import { carrent } from "@/assets";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -54,42 +54,45 @@ const components: { title: string; href: string; description: string }[] = [
 ];
 
 export function NavigationMenuDemo() {
+  const pathname = usePathname(); // Get the current pathname
+  const isCertificatesPage = pathname === '/certificates';
+  const isProjectsPage = pathname === '/projects';
+
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Menu</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] bg-black lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-3">
+            <ul className="grid gap-3 p-4 w-full md:w-[400px] lg:w-[500px] bg-black lg:grid-cols-[.75fr_1fr] border-4 border-gray-600 rounded-md">
+              <li className="row-span-3 border-4 border-gray-600 rounded-md w-full">
                 <NavigationMenuLink asChild>
-                  <a
+                  <Link
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/certificates"
+                    href={isCertificatesPage ? "/my-projects" : "/certificates"}
                   >
-                    <Image className="h-full w-full" src={carrent} alt="logo" width={100} height={100}/>
+                    <Image className="h-full w-full" src={isCertificatesPage ? "/projects.jpg" : "/cert.jpg"} alt="logo" width={100} height={100} />
                     <div className="mb-2 mt-4 text-lg font-medium">
-                      Certificates
+                      {isCertificatesPage ? "My Projects" : "Certificates"}
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      Certfications I achieved during my college years.
+                      {isCertificatesPage ? "Browse through my projects." : "Certifications I achieved during my college years."}
                     </p>
-                  </a>
+                  </Link>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/hackathon" title=" Won Hackathon">
-              Tech Nova Live-Project Competition held at SRM(2023).
+              <ListItem href="/hackathon" title="Won Hackathon">
+                Tech Nova Live-Project Competition held at SRM(2023).
               </ListItem>
               <ListItem href="/google-cloud" title="Google Cloud">
-              Completed various labs and received gift items from Google.
+                Completed various labs and received gift items from Google.
               </ListItem>
               <ListItem href="/my-coding-profiles" title="My Coding Profiles">
-               Contains my profiles of competitive coding.
+                Contains my profiles of competitive coding.
               </ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-       
       </NavigationMenuList>
     </NavigationMenu>
   );
@@ -100,12 +103,12 @@ const ListItem = React.forwardRef<
   React.ComponentPropsWithoutRef<"a">
 >(({ className, title, children, ...props }, ref) => {
   return (
-    <li>
+    <li className="border-4 border-gray-600 rounded-md w-full md:w-auto">
       <NavigationMenuLink asChild>
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground border-4 border-gray-600 w-full md:w-auto",
             className
           )}
           {...props}
