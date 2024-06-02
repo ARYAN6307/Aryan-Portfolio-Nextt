@@ -36,7 +36,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full h-screen bg-cover bg-center bg-fixed" style={{ backgroundImage: "url(/main-bg.webp)" }}>
+      <div className="w-full h-fit bg-cover bg-center bg-fixed" style={{ backgroundImage: "url(/main-bg.webp)" }}>
         <div className="flex items-center justify-center w-full h-full">
           <WobbleCardDemo />
         </div>
