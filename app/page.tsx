@@ -11,8 +11,6 @@ import Link from "next/link";
 export default function Home() {
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: "power4.inOut", duration: 1 } });
-
-    // Animate the h1 element
     tl.to('.hulaa', { clipPath: 'polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)', opacity: 1, y: 0 }, 0.2);
 
   }, []);
